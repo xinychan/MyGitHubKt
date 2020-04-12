@@ -11,7 +11,7 @@ import kotlin.reflect.full.isSubclassOf
 import kotlin.reflect.full.primaryConstructor
 import kotlin.reflect.jvm.jvmErasure
 
-abstract class BaseFragment<out P : BasePresenter<IMvpView<P>>> : IMvpView<P>, Fragment() {
+abstract class BaseFragment<out P : BasePresenter<BaseFragment<P>>> : IMvpView<P>, Fragment() {
     override val presenter: P
 
     init {
