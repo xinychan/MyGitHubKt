@@ -1,5 +1,6 @@
 package com.example.xinychan.common
 
+import com.example.xinychan.common.unused.AbsProperties
 import org.junit.Test
 
 class InfoProps : AbsProperties("info.properties") {

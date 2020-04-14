@@ -1,4 +1,4 @@
-package com.example.xinychan.common
+package com.example.xinychan.common.unused
 
 import java.io.File
 import java.io.FileInputStream
@@ -65,5 +65,6 @@ class PropertiesDelegate(private val path: String) {
 }
 
 abstract class AbsProperties(path: String) {
-    protected val prop = PropertiesDelegate(path)
+    protected val prop =
+        PropertiesDelegate(path)
 }

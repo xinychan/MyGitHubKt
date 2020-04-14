@@ -1,6 +1,7 @@
 package com.example.xinychan.common
 
-import org.junit.Assert
+import com.example.xinychan.common.ext.no
+import com.example.xinychan.common.ext.otherwise
 import org.junit.Test
 
 import org.junit.Assert.*

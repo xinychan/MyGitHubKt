@@ -1,4 +1,4 @@
-package com.example.xinychan.common
+package com.example.xinychan.common.sharedpreferences
 
 import android.content.Context
 import android.content.SharedPreferences

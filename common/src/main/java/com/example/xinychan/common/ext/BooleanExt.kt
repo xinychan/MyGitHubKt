@@ -1,4 +1,4 @@
-package com.example.xinychan.common
+package com.example.xinychan.common.ext
 
 /**
  * Boolean 扩展方法
