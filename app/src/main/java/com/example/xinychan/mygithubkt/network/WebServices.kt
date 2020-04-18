@@ -2,6 +2,8 @@ package com.example.xinychan.mygithubkt.network
 
 import com.example.xinychan.common.ext.ensureDir
 import com.example.xinychan.mygithubkt.AppContext
+import com.example.xinychan.mygithubkt.network.interceptors.AcceptInterceptor
+import com.example.xinychan.mygithubkt.network.interceptors.AuthInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,6 +29,8 @@ val retrofit: Retrofit by lazy {
                 .readTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .cache(Cache(cacheFile, 1024 * 1024 * 1024))
+                .addInterceptor(AcceptInterceptor())
+                .addInterceptor(AuthInterceptor())
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build()
         ).baseUrl(BASE_URL).build()
