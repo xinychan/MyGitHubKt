@@ -25,11 +25,18 @@ class Preference<T>(
     }
 
     override fun getValue(thisRef: Any?, property: KProperty<*>): T {
-        return findPreferences(name)
+        return findPreferences(findProperName(property))
+    }
+
+    private fun findProperName(property: KProperty<*>): String {
+        if (name.isEmpty()) {
+            return property.name
+        }
+        return name
     }
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
-        putPreferences(name, value)
+        putPreferences(findProperName(property), value)
     }
 
     private fun findPreferences(key: String): T {
