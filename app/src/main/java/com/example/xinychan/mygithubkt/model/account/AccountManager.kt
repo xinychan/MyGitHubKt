@@ -9,6 +9,7 @@ import com.example.xinychan.mygithubkt.utils.fromJson
 import com.example.xinychan.mygithubkt.utils.pref
 import com.google.gson.Gson
 import retrofit2.HttpException
+import retrofit2.Response
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -93,7 +94,7 @@ object AccountManager {
     /**
      * 用户登录
      */
-    fun login() {
+    fun login(): Observable<Unit> =
         AuthServices.createAuthorization(AuthorizationReq())
             // 请求完成后切换到主线程处理
             .observeOn(AndroidSchedulers.mainThread())
@@ -123,12 +124,11 @@ object AccountManager {
                 currentUser = it
                 notifyLogin(it)
             }
-    }
 
     /**
      * 用户退出登录
      */
-    fun logout() {
+    fun logout(): Observable<Response<Any>> =
         // 退出登录，删除鉴权信息
         AuthServices.deleteAuthorization(authId)
             // 请求完成后切换到主线程处理
@@ -146,7 +146,6 @@ object AccountManager {
                     throw HttpException(it)
                 }
             }
-    }
 
     /**
      * 登录失败的异常
