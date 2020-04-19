@@ -96,10 +96,6 @@ object AccountManager {
      */
     fun login(): Observable<Unit> =
         AuthServices.createAuthorization(AuthorizationReq())
-            // 请求完成后切换到主线程处理
-            .observeOn(AndroidSchedulers.mainThread())
-            // io 线程进行网络请求
-            .subscribeOn(Schedulers.io())
             .doOnNext {
                 // 已经登录过，返回 token 为空，需要删除 token 重新登录
                 if (it.token.isEmpty()) {
@@ -124,6 +120,10 @@ object AccountManager {
                 currentUser = it
                 notifyLogin(it)
             }
+            // 请求完成后切换到主线程处理
+            .observeOn(AndroidSchedulers.mainThread())
+            // io 线程进行网络请求
+            .subscribeOn(Schedulers.io())
 
     /**
      * 用户退出登录
@@ -131,10 +131,6 @@ object AccountManager {
     fun logout(): Observable<Response<Any>> =
         // 退出登录，删除鉴权信息
         AuthServices.deleteAuthorization(authId)
-            // 请求完成后切换到主线程处理
-            .observeOn(AndroidSchedulers.mainThread())
-            // io 线程进行网络请求
-            .subscribeOn(Schedulers.io())
             .doOnNext {
                 if (it.isSuccessful) {
                     // 退出登录成功，通知界面已经退出登录，更新界面
@@ -146,6 +142,10 @@ object AccountManager {
                     throw HttpException(it)
                 }
             }
+            // 请求完成后切换到主线程处理
+            .observeOn(AndroidSchedulers.mainThread())
+            // io 线程进行网络请求
+            .subscribeOn(Schedulers.io())
 
     /**
      * 登录失败的异常
