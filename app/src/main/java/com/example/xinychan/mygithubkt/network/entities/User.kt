@@ -1,11 +1,14 @@
 package com.example.xinychan.mygithubkt.network.entities
 
+import android.os.Parcelable
 import com.example.xinychan.common.anno.Poko
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Github 请求返回的用户信息
  */
 @Poko
+@Parcelize
 data class User(
     var login: String,
     var avatar_url: String,
@@ -30,4 +33,4 @@ data class User(
     var owned_private_repos: Int,
     var disk_usage: Int,
     var collaborators: Int
-)
+):Parcelable
