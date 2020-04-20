@@ -11,34 +11,10 @@ import com.example.xinychan.mvp.impl.BaseActivity
 import com.example.xinychan.mygithubkt.R
 import com.example.xinychan.mygithubkt.presenter.LoginPresenter
 import com.example.xinychan.mygithubkt.utils.hideSoftInput
+import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 
 class LoginActivity : BaseActivity<LoginPresenter>() {
-
-    // 登录进度条
-    private val loginProgress: ProgressBar by lazy {
-        findViewById<ProgressBar>(R.id.loginProgress)
-    }
-
-    // 登录界面布局
-    private val loginForm: LinearLayout by lazy {
-        findViewById<LinearLayout>(R.id.loginForm)
-    }
-
-    // 用户名输入框
-    private val username: AutoCompleteTextView by lazy {
-        findViewById<AutoCompleteTextView>(R.id.username)
-    }
-
-    // 密码输入框
-    private val password: EditText by lazy {
-        findViewById<EditText>(R.id.password)
-    }
-
-    // 登录按钮
-    private val signInButton: Button by lazy {
-        findViewById<Button>(R.id.signInButton)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
