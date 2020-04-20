@@ -49,6 +49,8 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
         }
     }
 
+    // todo 登录报错：retrofit2.adapter.rxjava.HttpException: HTTP 401 Unauthorized
+    // todo 可能账户密码已经修改，需要配置正确账户和密码，或者github鉴权规则修改，需要修改请求头
     // 点击进行登录
     private fun clickToLogin() {
         val name: String = username.text.toString()
