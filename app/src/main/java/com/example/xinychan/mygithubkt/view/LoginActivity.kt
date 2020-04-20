@@ -12,6 +12,7 @@ import com.example.xinychan.mygithubkt.R
 import com.example.xinychan.mygithubkt.presenter.LoginPresenter
 import com.example.xinychan.mygithubkt.utils.hideSoftInput
 import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.sdk15.listeners.onClick
 import org.jetbrains.anko.toast
 
 class LoginActivity : BaseActivity<LoginPresenter>() {
@@ -20,7 +21,7 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        signInButton.setOnClickListener {
+        signInButton.onClick {
             clickToLogin()
         }
     }
