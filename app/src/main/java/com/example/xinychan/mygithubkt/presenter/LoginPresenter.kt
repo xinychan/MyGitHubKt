@@ -1,6 +1,7 @@
 package com.example.xinychan.mygithubkt.presenter
 
 import com.example.xinychan.mvp.impl.BasePresenter
+import com.example.xinychan.mygithubkt.BuildConfig
 import com.example.xinychan.mygithubkt.model.account.AccountManager
 import com.example.xinychan.mygithubkt.view.LoginActivity
 
@@ -38,5 +39,10 @@ class LoginPresenter : BasePresenter<LoginActivity>() {
     override fun onResume() {
         super.onResume()
         view.onDataInit(AccountManager.username, AccountManager.passwd)
+        if(BuildConfig.DEBUG){
+            view.onDataInit(BuildConfig.testUserName, BuildConfig.testPassword)
+        } else {
+            view.onDataInit(AccountManager.username, AccountManager.passwd)
+        }
     }
 }
