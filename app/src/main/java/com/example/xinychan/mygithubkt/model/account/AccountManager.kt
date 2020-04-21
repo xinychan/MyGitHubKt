@@ -11,8 +11,6 @@ import com.google.gson.Gson
 import retrofit2.HttpException
 import retrofit2.Response
 import rx.Observable
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
 
 /**
  * 用户登录状态变化监听器
@@ -120,10 +118,6 @@ object AccountManager {
                 currentUser = it
                 notifyLogin(it)
             }
-            // 请求完成后切换到主线程处理
-            .observeOn(AndroidSchedulers.mainThread())
-            // io 线程进行网络请求
-            .subscribeOn(Schedulers.io())
 
     /**
      * 用户退出登录
@@ -142,10 +136,6 @@ object AccountManager {
                     throw HttpException(it)
                 }
             }
-            // 请求完成后切换到主线程处理
-            .observeOn(AndroidSchedulers.mainThread())
-            // io 线程进行网络请求
-            .subscribeOn(Schedulers.io())
 
     /**
      * 登录失败的异常
