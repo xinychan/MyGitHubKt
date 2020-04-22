@@ -2,12 +2,14 @@ package com.example.xinychan.mygithubkt.view
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.EditText
 import com.example.xinychan.common.ext.otherwise
 import com.example.xinychan.common.ext.yes
 import com.example.xinychan.mvp.impl.BaseActivity
+import com.example.xinychan.mygithubkt.MainActivity
 import com.example.xinychan.mygithubkt.R
 import com.example.xinychan.mygithubkt.presenter.LoginPresenter
 import com.example.xinychan.mygithubkt.utils.hideSoftInput
@@ -88,11 +90,18 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
     fun onLoginSuccess() {
         toast("登录成功")
         showProgress(false)
+        startMainActivity()
     }
 
     fun onDataInit(name: String, passwd: String) {
         username.setText(name)
         password.setText(passwd)
+    }
+
+    private fun startMainActivity() {
+        val intent: Intent = Intent()
+        intent.setClass(this, MainActivity::class.java)
+        this.startActivity(intent)
     }
 
 }
