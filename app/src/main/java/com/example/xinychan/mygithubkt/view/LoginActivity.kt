@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import com.example.xinychan.common.ext.otherwise
 import com.example.xinychan.common.ext.yes
 import com.example.xinychan.mvp.impl.BaseActivity
@@ -14,8 +15,6 @@ import com.example.xinychan.mygithubkt.R
 import com.example.xinychan.mygithubkt.presenter.LoginPresenter
 import com.example.xinychan.mygithubkt.utils.hideSoftInput
 import kotlinx.android.synthetic.main.activity_login.*
-import org.jetbrains.anko.sdk15.listeners.onClick
-import org.jetbrains.anko.toast
 
 class LoginActivity : BaseActivity<LoginPresenter>() {
 
@@ -23,7 +22,7 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        signInButton.onClick {
+        signInButton.setOnClickListener {
             clickToLogin()
         }
     }
@@ -83,12 +82,12 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
 
     fun onLoginError(e: Throwable) {
         e.printStackTrace()
-        toast("登录失败")
+        Toast.makeText(this,"登录失败",Toast.LENGTH_SHORT).show()
         showProgress(false)
     }
 
     fun onLoginSuccess() {
-        toast("登录成功")
+        Toast.makeText(this,"登录成功",Toast.LENGTH_SHORT).show()
         showProgress(false)
         startMainActivity()
     }
