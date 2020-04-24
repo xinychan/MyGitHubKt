@@ -66,7 +66,7 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
             .alpha(loginProgressAlpha)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
-                    loginForm.visibility = loginProgressVisible
+                    loginProgress.visibility = loginProgressVisible
                 }
             })
     }
