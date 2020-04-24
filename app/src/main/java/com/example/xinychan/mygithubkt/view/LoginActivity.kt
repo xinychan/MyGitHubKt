@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import com.example.xinychan.common.ext.otherwise
-import com.example.xinychan.common.ext.yes
 import com.example.xinychan.mvp.impl.BaseActivity
 import com.example.xinychan.mygithubkt.MainActivity
 import com.example.xinychan.mygithubkt.R
@@ -33,16 +31,8 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
     private fun clickToLogin() {
         val name: String = username.text.toString()
         val psw: String = password.text.toString()
-        presenter.checkUserName(name).yes {
-            presenter.checkPasswd(psw).yes {
-                hideSoftInput()
-                presenter.doLogin(name, psw)
-            }.otherwise {
-                showTips(password, "密码不合法")
-            }
-        }.otherwise {
-            showTips(username, "用户名不合法")
-        }
+        hideSoftInput()
+        presenter.doLogin(name, psw)
     }
 
     // 是否显示登录进度条
