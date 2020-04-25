@@ -80,6 +80,7 @@ dependencies {
     api 'cn.carbs.android:AvatarImageView:1.0.4'
 
     api 'com.bennyhuo.tieguanyin:tieguanyin-runtime:1.0-beta'
+    api 'com.bennyhuo.tieguanyin:tieguanyin-annotations:1.0-beta'
     kapt 'com.bennyhuo.tieguanyin:tieguanyin-compiler:1.0-beta'
 
     /* 源码地址：https://github.com/enbandari/RichText；这个项目是从 https://github.com/zzhoujay/RichText 修改而来的
