@@ -55,6 +55,8 @@ final class GitHubListOnSubscribe<GitHubPagingBody> implements Observable.OnSubs
                 GitHubPaging<?> paging;
                 if (response.body() instanceof GitHubPaging) {
                     paging = (GitHubPaging<?>) response.body();
+                } else if (response.body() instanceof PagingWrapper) {
+                    paging = ((PagingWrapper) response.body()).getPaging();
                 } else {
                     throw new IllegalArgumentException("response.body type error: " + response.body().getClass());
                 }

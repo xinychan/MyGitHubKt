@@ -158,6 +158,9 @@ public final class RxJavaCallAdapterFactory2 extends CallAdapter.Factory {
             }
             responseType = observableType;
             isPaging = true;
+        } else if (PagingWrapper.class.isAssignableFrom(rawObservableType)) {
+            responseType = observableType;
+            isPaging = true;
         } else {
             responseType = observableType;
             isBody = true;

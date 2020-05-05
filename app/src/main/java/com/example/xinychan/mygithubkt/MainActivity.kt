@@ -14,6 +14,7 @@ import com.example.xinychan.mygithubkt.model.account.OnAccountStateChangeListene
 import com.example.xinychan.mygithubkt.network.entities.User
 import com.example.xinychan.mygithubkt.network.services.RepositoryService
 import com.example.xinychan.mygithubkt.utils.doOnLayoutAvailable
+import com.example.xinychan.mygithubkt.utils.format
 import com.example.xinychan.mygithubkt.utils.loadWithGlide
 import com.example.xinychan.mygithubkt.utils.showFragment
 import com.example.xinychan.mygithubkt.view.LoginActivity
@@ -21,6 +22,7 @@ import com.example.xinychan.mygithubkt.view.fragments.AboutFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
 
@@ -49,6 +51,13 @@ class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
         RepositoryService.listRepositoriesOfUser("enbandari", 2)
             .subscribe({
                 logger.debug("Paging: hasNext=${it.hasNext}, hasPrev=${it.hasPrev}")
+            }, {
+                it.printStackTrace()
+            })
+
+        RepositoryService.allRepositories(2, "pushed:<" + Date().format("yyyy-MM-dd"))
+            .subscribe( {
+                logger.debug("Paging: hasNext=${it.paging.hasNext}, hasPrev=${it.paging.hasPrev}")
             }, {
                 it.printStackTrace()
             })

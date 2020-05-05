@@ -1,6 +1,7 @@
 package com.example.xinychan.mygithubkt.network.services
 
 import com.example.xinychan.mygithubkt.network.entities.Repository
+import com.example.xinychan.mygithubkt.network.entities.SearchRepositories
 import com.example.xinychan.mygithubkt.network.retrofit
 import retrofit2.adapter.rxjava.GitHubPaging
 import retrofit2.http.GET
@@ -16,6 +17,13 @@ interface RepositoryApi {
         @Query("page") page: Int = 1,
         @Query("per_page") per_page: Int = 20
     ): Observable<GitHubPaging<Repository>>
+
+    @GET("/search/repositories?order=desc&sort=updated")
+    fun allRepositories(
+        @Query("page") page: Int = 1,
+        @Query("q") q: String,
+        @Query("per_page") per_page: Int = 20
+    ): Observable<SearchRepositories>
 }
 
 object RepositoryService : RepositoryApi by retrofit.create(RepositoryApi::class.java)
