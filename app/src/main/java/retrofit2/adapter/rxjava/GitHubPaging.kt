@@ -1,5 +1,7 @@
 package retrofit2.adapter.rxjava
 
+import com.example.xinychan.common.log.logger
+
 class GitHubPaging<T> : ArrayList<T>() {
     companion object {
         const val URL_PATTERN =
@@ -30,10 +32,12 @@ class GitHubPaging<T> : ArrayList<T>() {
     }
 
     fun setupLinks(link: String) {
+        logger.warn("setupLinks: $link")
         Regex("""<($URL_PATTERN)>;rel="(\w+)"""").findAll(link).asIterable()
             .map { matchResult ->
                 val url = matchResult.groupValues[1]
                 relMap[matchResult.groupValues[3]] = url // next=....
+                logger.warn("${matchResult.groupValues[3]} => ${matchResult.groupValues[1]}")
             }
     }
 

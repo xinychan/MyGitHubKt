@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.example.xinychan.common.ext.no
 import com.example.xinychan.common.ext.otherwise
+import com.example.xinychan.common.log.logger
 import com.example.xinychan.mygithubkt.model.account.AccountManager
 import com.example.xinychan.mygithubkt.model.account.OnAccountStateChangeListener
 import com.example.xinychan.mygithubkt.network.entities.User
+import com.example.xinychan.mygithubkt.network.services.RepositoryService
 import com.example.xinychan.mygithubkt.utils.doOnLayoutAvailable
 import com.example.xinychan.mygithubkt.utils.loadWithGlide
 import com.example.xinychan.mygithubkt.utils.showFragment
@@ -43,6 +45,13 @@ class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
         AccountManager.onAccountStateChangeListeners.add(this)
 
         showFragment(R.id.fragmentContainer, AboutFragment::class.java)
+
+        RepositoryService.listRepositoriesOfUser("enbandari", 2)
+            .subscribe({
+                logger.debug("Paging: hasNext=${it.hasNext}, hasPrev=${it.hasPrev}")
+            }, {
+                it.printStackTrace()
+            })
     }
 
     override fun onDestroy() {
