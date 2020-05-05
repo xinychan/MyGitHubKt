@@ -25,26 +25,26 @@ import rx.exceptions.OnErrorFailedException;
 import rx.exceptions.OnErrorNotImplementedException;
 import rx.plugins.RxJavaPlugins;
 
-final class GitHubListOnSubscribe<T> implements Observable.OnSubscribe<T> {
-    private final Observable.OnSubscribe<Response<T>> upstream;
+final class GitHubListOnSubscribe<GitHubPagingBody> implements Observable.OnSubscribe<GitHubPagingBody> {
+    private final Observable.OnSubscribe<Response<GitHubPagingBody>> upstream;
 
-    GitHubListOnSubscribe(Observable.OnSubscribe<Response<T>> upstream) {
+    GitHubListOnSubscribe(Observable.OnSubscribe<Response<GitHubPagingBody>> upstream) {
         this.upstream = upstream;
     }
 
     @Override
-    public void call(Subscriber<? super T> subscriber) {
-        upstream.call(new BodySubscriber<T>(subscriber));
+    public void call(Subscriber<? super GitHubPagingBody> subscriber) {
+        upstream.call(new GitHubListSubscriber<GitHubPagingBody>(subscriber));
     }
 
-    private static class BodySubscriber<GitHubPagingBody> extends Subscriber<Response<GitHubPagingBody>> {
+    private static class GitHubListSubscriber<GitHubPagingBody> extends Subscriber<Response<GitHubPagingBody>> {
         private final Subscriber<? super GitHubPagingBody> subscriber;
         /**
          * Indicates whether a terminal event has been sent to {@link #subscriber}.
          */
         private boolean subscriberTerminated;
 
-        BodySubscriber(Subscriber<? super GitHubPagingBody> subscriber) {
+        GitHubListSubscriber(Subscriber<? super GitHubPagingBody> subscriber) {
             super(subscriber);
             this.subscriber = subscriber;
         }
