@@ -13,8 +13,11 @@ import com.example.xinychan.mygithubkt.model.account.OnAccountStateChangeListene
 import com.example.xinychan.mygithubkt.network.entities.User
 import com.example.xinychan.mygithubkt.utils.doOnLayoutAvailable
 import com.example.xinychan.mygithubkt.utils.loadWithGlide
+import com.example.xinychan.mygithubkt.utils.showFragment
 import com.example.xinychan.mygithubkt.view.LoginActivity
+import com.example.xinychan.mygithubkt.view.fragments.AboutFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
@@ -22,6 +25,8 @@ class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+        title = "About"
 
         // 实现 ActionBar 与 抽屉联动
         val toggle = ActionBarDrawerToggle(
@@ -36,6 +41,8 @@ class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
         initNavigationView()
 
         AccountManager.onAccountStateChangeListeners.add(this)
+
+        showFragment(R.id.fragmentContainer, AboutFragment::class.java)
     }
 
     override fun onDestroy() {
