@@ -24,3 +24,17 @@ fun AppCompatActivity.showFragment(
         clazz.name
     ).commitAllowingStateLoss()
 }
+
+fun AppCompatActivity.showFragment(
+    containerId: Int,
+    clazz: Class<out Fragment>,
+    args: Bundle
+) {
+    supportFragmentManager.beginTransaction()
+        .replace(
+            containerId,
+            clazz.newInstance().apply { arguments = args },
+            clazz.name
+        )
+        .commitAllowingStateLoss()
+}
