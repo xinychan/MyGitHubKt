@@ -2,7 +2,6 @@ package com.example.xinychan.mygithubkt.view.common
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.PagerAdapter
 import com.example.xinychan.mygithubkt.utils.ViewPagerAdapterList
 import com.example.xinychan.mygithubkt.view.config.FragmentPage
