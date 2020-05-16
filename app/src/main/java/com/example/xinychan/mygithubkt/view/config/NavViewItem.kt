@@ -5,10 +5,7 @@ import android.support.annotation.DrawableRes
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import com.example.xinychan.mygithubkt.R
-import com.example.xinychan.mygithubkt.view.fragments.AboutFragment
-import com.example.xinychan.mygithubkt.view.fragments.MyIssueFragment
-import com.example.xinychan.mygithubkt.view.fragments.PeopleFragment
-import com.example.xinychan.mygithubkt.view.fragments.RepoListFragment
+import com.example.xinychan.mygithubkt.view.fragments.*
 
 /**
  * 导航栏的ItemView
@@ -26,8 +23,11 @@ class NavViewItem private constructor(
                 0,
                 "Repository",
                 R.drawable.ic_repository,
-                RepoListFragment::class.java
-            ),
+                RepoListFragment::class.java,
+                Bundle().apply {
+                    putParcelable(RepoListFragmentBuilder.OPTIONAL_USER, null)
+                }),
+
             R.id.navPeople to NavViewItem(
                 0,
                 "People",

@@ -9,11 +9,11 @@ import retrofit2.adapter.rxjava.GitHubPaging
 import rx.Observable
 import java.util.*
 
-class RepoListModel(val owner: User?) : ListPage<Repository>() {
+class RepoListPage(val owner: User?) : ListPage<Repository>() {
     override fun getData(page: Int): Observable<GitHubPaging<Repository>> {
         // 未登录则查询所有的仓库；已登录则查询登录用户的仓库
         return if (owner == null) {
-            RepositoryService.allRepositories(page, "push:<" + Date().format("yyyy-MM-dd"))
+            RepositoryService.allRepositories(page, "pushed:<" + Date().format("yyyy-MM-dd"))
                 .map { it.paging }
         } else {
             RepositoryService.listRepositoriesOfUser(owner.login, page)
