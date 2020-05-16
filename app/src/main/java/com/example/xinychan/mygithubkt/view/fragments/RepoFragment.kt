@@ -6,7 +6,12 @@ import com.example.xinychan.mygithubkt.view.common.CommonViewPagerFragment
 import com.example.xinychan.mygithubkt.view.config.FragmentPage
 
 class RepoFragment : CommonViewPagerFragment() {
-    override fun getFragmentPages(): List<FragmentPage> {
+
+    override fun getFragmentPagesNotLoggedIn(): List<FragmentPage> {
+        return listOf(FragmentPage(RepoListFragment(), "All"))
+    }
+
+    override fun getFragmentPagesLoggedIn(): List<FragmentPage> {
         return listOf(
             FragmentPage(RepoListFragment().apply {
                 arguments = Bundle().apply {
@@ -19,4 +24,5 @@ class RepoFragment : CommonViewPagerFragment() {
             FragmentPage(RepoListFragment(), "All")
         )
     }
+
 }

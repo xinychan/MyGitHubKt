@@ -8,9 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.xinychan.mygithubkt.MainActivity
 import com.example.xinychan.mygithubkt.R
+import com.example.xinychan.mygithubkt.model.account.AccountManager
+import com.example.xinychan.mygithubkt.model.account.OnAccountStateChangeListener
+import com.example.xinychan.mygithubkt.network.entities.User
 import com.example.xinychan.mygithubkt.view.config.ViewPagerFragmentConfig
 
-abstract class CommonViewPagerFragment : Fragment(), ViewPagerFragmentConfig {
+abstract class CommonViewPagerFragment : Fragment(), ViewPagerFragmentConfig,
+    OnAccountStateChangeListener {
 
     private val viewPageAdapter by lazy {
         CommonViewPageAdapter(childFragmentManager)
@@ -32,6 +36,32 @@ abstract class CommonViewPagerFragment : Fragment(), ViewPagerFragmentConfig {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).actionBarController.setupWithViewPager(viewPager)
-        viewPageAdapter.fragmentPages.addAll(getFragmentPages())
+        viewPageAdapter.fragmentPages.addAll(
+            if (AccountManager.isLoggedIn()) {
+                getFragmentPagesLoggedIn()
+            } else {
+                getFragmentPagesNotLoggedIn()
+            }
+        )
+    }
+
+    override fun onLogin(user: User) {
+        viewPageAdapter.fragmentPages.clear()
+        viewPageAdapter.fragmentPages.addAll(getFragmentPagesLoggedIn())
+    }
+
+    override fun onLogout() {
+        viewPageAdapter.fragmentPages.clear()
+        viewPageAdapter.fragmentPages.addAll(getFragmentPagesNotLoggedIn())
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        AccountManager.onAccountStateChangeListeners.add(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AccountManager.onAccountStateChangeListeners.remove(this)
     }
 }
