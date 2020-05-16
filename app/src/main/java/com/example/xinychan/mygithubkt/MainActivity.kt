@@ -16,11 +16,16 @@ import com.example.xinychan.mygithubkt.utils.afterClosed
 import com.example.xinychan.mygithubkt.utils.showFragment
 import com.example.xinychan.mygithubkt.view.LoginActivity
 import com.example.xinychan.mygithubkt.view.config.NavViewItem
+import com.example.xinychan.mygithubkt.view.widget.ActionBarController
 import com.example.xinychan.mygithubkt.view.widget.NavigationController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
+
+    val actionBarController by lazy {
+        ActionBarController(this)
+    }
 
     private val navigationController by lazy {
         NavigationController(navigationView, ::onNavItemChanged, ::handleNavigationHeaderClickEvent)
