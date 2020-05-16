@@ -19,11 +19,12 @@ class NavViewItem private constructor(
 
     companion object {
         private val items = mapOf(
+
             R.id.navRepos to NavViewItem(
                 0,
                 "Repository",
                 R.drawable.ic_repository,
-                RepoListFragment::class.java,
+                RepoFragment::class.java,
                 Bundle().apply {
                     putParcelable(RepoListFragmentBuilder.OPTIONAL_USER, null)
                 }),

@@ -2,18 +2,18 @@ package com.example.xinychan.mygithubkt.view.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.xinychan.mygithubkt.R
 import com.example.xinychan.mygithubkt.utils.markdownText
+import com.example.xinychan.mygithubkt.view.common.CommonSinglePageFragment
 
 /**
  * 关于界面
  */
-class AboutFragment : Fragment() {
+class AboutFragment : CommonSinglePageFragment() {
 
     // 初始化 licenses.md 是耗时操作，创建全局变量避免每次都初始化 licenses.md
     private var mLicenseText: String? = null
