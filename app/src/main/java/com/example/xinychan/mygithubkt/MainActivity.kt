@@ -21,6 +21,12 @@ import com.example.xinychan.mygithubkt.view.widget.NavigationController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
+/**
+ * 基本功能已经实现，其余剩下部分不再跟进
+ * 1-剩下详情页面开发，主要是UI界面以及网络请求；
+ * 2-GraphQL API 使用，替换 RESTful API 风格的 API
+ * 3-使用协程重构代码；
+ */
 class MainActivity : AppCompatActivity(), OnAccountStateChangeListener {
 
     val actionBarController by lazy {
