@@ -38,12 +38,14 @@ class NavigationController(
         navigationView.menu.clear()
         navigationView.inflateMenu(R.menu.activity_main_drawer) //inflate new items.
         onUpdate(AccountManager.currentUser)
+        selectProperItem()
     }
 
     fun useNoLoginLayout() {
         navigationView.menu.clear()
         navigationView.inflateMenu(R.menu.activity_main_drawer_no_logged_in) //inflate new items.
         onUpdate(AccountManager.currentUser)
+        selectProperItem()
     }
 
     private fun onUpdate(user: User?) {
