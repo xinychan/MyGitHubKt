@@ -4,6 +4,8 @@ import android.os.Bundle
 import com.example.xinychan.mygithubkt.model.account.AccountManager
 import com.example.xinychan.mygithubkt.view.common.CommonViewPagerFragment
 import com.example.xinychan.mygithubkt.view.config.FragmentPage
+import com.example.xinychan.mygithubkt.view.fragments.subfragments.RepoListFragment
+import com.example.xinychan.mygithubkt.view.fragments.subfragments.RepoListFragmentBuilder
 
 class RepoFragment : CommonViewPagerFragment() {
 

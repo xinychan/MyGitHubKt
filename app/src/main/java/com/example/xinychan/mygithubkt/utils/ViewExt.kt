@@ -13,3 +13,9 @@ var TextView.markdownText: String
     set(value) {
         RichText.fromMarkdown(value).into(this)
     }
+
+var TextView.htmlText: String
+    set(value) {
+        RichText.fromHtml(value).into(this)
+    }
+    get() = text.toString()

@@ -1,18 +1,15 @@
 package com.example.xinychan.mygithubkt.view.fragments
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.example.xinychan.mygithubkt.R
-import com.example.xinychan.mygithubkt.view.common.CommonSinglePageFragment
+import com.example.xinychan.mygithubkt.view.common.CommonViewPagerFragment
+import com.example.xinychan.mygithubkt.view.config.FragmentPage
+import com.example.xinychan.mygithubkt.view.fragments.subfragments.MyIssueListFragment
 
-class MyIssueFragment : CommonSinglePageFragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_my_issue, null)
-    }
+class MyIssueFragment : CommonViewPagerFragment() {
+    override fun getFragmentPagesNotLoggedIn() = listOf(
+        FragmentPage(MyIssueListFragment(), "My")
+    )
+
+    override fun getFragmentPagesLoggedIn(): List<FragmentPage> = listOf(
+        FragmentPage(MyIssueListFragment(), "My")
+    )
 }

@@ -1,4 +1,4 @@
-package com.example.xinychan.mygithubkt.view.fragments
+package com.example.xinychan.mygithubkt.view.fragments.subfragments
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

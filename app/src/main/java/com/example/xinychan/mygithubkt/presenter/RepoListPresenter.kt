@@ -3,7 +3,7 @@ package com.example.xinychan.mygithubkt.presenter
 import com.example.xinychan.mygithubkt.model.repo.RepoListPage
 import com.example.xinychan.mygithubkt.network.entities.Repository
 import com.example.xinychan.mygithubkt.view.common.CommonListPresenter
-import com.example.xinychan.mygithubkt.view.fragments.RepoListFragment
+import com.example.xinychan.mygithubkt.view.fragments.subfragments.RepoListFragment
 
 class RepoListPresenter : CommonListPresenter<Repository, RepoListFragment>() {
     override val listPage by lazy {

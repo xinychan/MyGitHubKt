@@ -5,7 +5,11 @@ import android.support.annotation.DrawableRes
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import com.example.xinychan.mygithubkt.R
-import com.example.xinychan.mygithubkt.view.fragments.*
+import com.example.xinychan.mygithubkt.view.fragments.AboutFragment
+import com.example.xinychan.mygithubkt.view.fragments.MyIssueFragment
+import com.example.xinychan.mygithubkt.view.fragments.PeopleFragment
+import com.example.xinychan.mygithubkt.view.fragments.RepoFragment
+import com.example.xinychan.mygithubkt.view.fragments.subfragments.RepoListFragmentBuilder
 
 /**
  * 导航栏的ItemView

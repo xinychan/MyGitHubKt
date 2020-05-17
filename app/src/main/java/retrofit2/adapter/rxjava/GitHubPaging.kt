@@ -1,6 +1,7 @@
 package retrofit2.adapter.rxjava
 
 import com.example.xinychan.common.log.logger
+import okhttp3.HttpUrl
 
 class GitHubPaging<T> : ArrayList<T>() {
     companion object {
@@ -27,6 +28,8 @@ class GitHubPaging<T> : ArrayList<T>() {
     val hasPrev
         get() = prev != null
 
+    var since: Int = 0
+
     operator fun get(key: String): String? {
         return relMap[key]
     }
@@ -37,6 +40,11 @@ class GitHubPaging<T> : ArrayList<T>() {
             .map { matchResult ->
                 val url = matchResult.groupValues[1]
                 relMap[matchResult.groupValues[3]] = url // next=....
+                if(url.contains("since")){
+                    HttpUrl.parse(url)?.queryParameter("since")?.let{
+                        since = it.toInt()
+                    }
+                }
                 logger.warn("${matchResult.groupValues[3]} => ${matchResult.groupValues[1]}")
             }
     }
@@ -45,6 +53,7 @@ class GitHubPaging<T> : ArrayList<T>() {
         addAll(paging)
         relMap.clear()
         relMap.putAll(paging.relMap)
+        since = paging.since
         return this
     }
 }

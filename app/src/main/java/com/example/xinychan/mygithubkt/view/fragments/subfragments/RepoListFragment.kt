@@ -1,4 +1,4 @@
-package com.example.xinychan.mygithubkt.view.fragments
+package com.example.xinychan.mygithubkt.view.fragments.subfragments
 
 import com.bennyhuo.tieguanyin.annotations.FragmentBuilder
 import com.bennyhuo.tieguanyin.annotations.Optional
